@@ -22,8 +22,24 @@ specialCases x = "???"
 -- wywołanie concat (map specialCases [1..4]) zwróci "Hello World!"
 -- wywołanie concat (map specialCases [1..6]) zwróci "Hello World!??????"
 
+head' :: [a] -> a
+head' [] = error "Empty list."
 head' (x:_) = x
-length' list = sum([1| _<-list])
+
+-- własna implementacja funkcji length
+length1 :: (Num b) => [a] -> b
+length1 list = sum([1| _ <- list])
+
+-- implementacja funkcji length ze strony http://learnyouahaskell.com/syntax-in-functions
+length2 :: (Num b) => [a] -> b
+length2 [] = 0
+length2 (_:xs) = 1 + length2 xs
+
+-- implementacja funkcji sum ze strony http://learnyouahaskell.com/syntax-in-functions
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
+
 take' x list =
     if length list == x
         then list
@@ -31,3 +47,8 @@ take' x list =
 map' fun arg = [fun x| x<-arg]
 (+++) [] ys = ys
 (+++) (x:xs) ys = x : ((+++) xs ys)
+
+-- prosta funkcja, tylko do zaznajomienia się ze składnią
+lucky :: (Integral a) => a -> String
+lucky 7 = "LUCKY NUMBER SEVEN!"
+lucky x = "Sorry, you're out of luck, pal!"
