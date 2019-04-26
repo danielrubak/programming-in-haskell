@@ -1,23 +1,41 @@
-# programming-in-haskell
-Contains tasks carried out as part of the 'Functional Programming' course at AGH
+# Programming in Haskell
 
-http://learnyouahaskell.com/chapters
+This repository contains source code for tasks that I developed on the course of "Functional Programming" at AGH University of Science and Technology in Cracow.
 
-http://www.newthinktank.com/2015/08/learn-haskell-one-video/
+## Getting Started
 
-Początkowy setup projektu (wysatrczy wykonać raz):
+Install haskell-platform package. Simply run,
+
+```bash
+sudo apt-get install haskell-platform
+```
+
+## Usage
+
+Initial project setup (just do it once):
+
 ```bash
 cabal sandbox init
 cabal update
 cabal install --only-dependencies
 ```
 
-Kompilacja projektu:
+To compile project, simply run:
+
 ```bash
 cabal build
 ```
 
-Kompilacja kodu i załadowanie biblioteki do ghci:
+To compile project and load all libraries, run:
+
 ```bash
 cabal repl
 ```
+
+## Useful links
+
+[Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
+
+[Learn Haskell in one video](http://www.newthinktank.com/2015/08/learn-haskell-one-video/)
+
+[Real World Haskell](http://book.realworldhaskell.org/read/)
