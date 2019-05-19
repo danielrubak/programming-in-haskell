@@ -1,91 +1,44 @@
 module Tree where
-    
-import Data.Char
 
-data Tree a= Empty | Node a(Tree a) (Tree a) deriving (Eq, Ord, Read, Show)
+-- it means that Tree of type a consists of Leaf node or a Node containing one value of type a with exactly two subtrees of type a
+data Tree a = Leaf | Node a (Tree a) (Tree a)
+    deriving (Show, Eq)
 
-empty Empty = True
-empty _ = False
+testTree :: Tree Int
+testTree = Node 7 (Node 3 (Node 1 Leaf Leaf) (Node 4 Leaf Leaf)) (Node 19 (Node 16 Leaf Leaf) (Node 41 Leaf Leaf))
 
-insert elem Empty =
-   Node elem Empty Empty
+-- check if tree is empty
+empty :: Tree a -> Bool
+empty Leaf  = True
+empty _     = False
 
-insert elem (Node x left right)
-  |x >= elem = (Node x left (insert elem right))
-  |x < elem = (Node x (insert elem left) right)
+-- insert value
+insert :: (Ord a) => Tree a -> a -> Tree a
+insert Leaf new_el = 
+    Node new_el Leaf Leaf
 
-toString Empty =
-  putStr "Empty"
-toString (Node x left right)= do
-  putStr( show x ++ "(")
-  toString left
-  putStr( "),(")
-  toString right
-  putStr(")")
+-- rt - right tree
+-- lt - left tree
+-- val - value for current Node
+-- x - value to insert to the tree
+insert (Node val lt rt) x 
+    | x == val = Node val lt rt
+    | x < val = Node val (insert lt x) rt
+    | x > val = Node val rt (insert rt x)
 
+-- search value in tree
+search :: (Ord a) => Tree a -> a -> Bool
+search Leaf x = False
+search (Node val lt rt) x 
+    | x == val = True
+    | x > val = search rt x
+    | x < val = search lt x
 
-search x Empty = False
-search x (Node y left right)
-  | x == y = True
-  | x > y = search x left
-  | x < y = search x right
+leaves :: Tree a -> Int
+leaves Leaf                 = 0
+leaves (Node _ Leaf Leaf)   = 1
+leaves (Node _ lt rt)       = leaves lt + leaves rt
 
-
-nnodes Empty = 0
-nnodes (Node k left right)=
-  1 + nnodes left + nnodes right
-
-
-leaves Empty = []
-leaves (Node k Empty Empty)=[k]
-leaves (Node k left right)=
-   leaves left ++ leaves right
-
-nsum Empty = 0
-nsum (Node k left right)=
-  k + nsum left + nsum right
-
-vlr Empty = []
-vlr(Node v left right)=
-  [v] ++ vlr left ++ vlr right
-
-lvr Empty = []
-lvr (Node v left right)=
-  lvr left ++ [v] ++ lvr right
-
-lrv Empty = []
-lrv (Node v left right)=
-  lrv left ++ lrv right ++ [v]
-
-vrl Empty = []
-vrl(Node v left right)=
-  [v] ++ vrl right ++ vrl left
-
-rvl Empty = []
-rvl (Node v left right)=
-  rvl right ++ [v] ++ rvl left
-
-rlv Empty = []
-rlv (Node v left right)=
-  rlv right ++ rlv left ++ [v]
-
-tmap fun (Node v left right) =
-  [ fun x| x<-(vlr (Node v left right))]
-
-getLevel x Empty = []
-getLevel 0 (Node x _ _) = [x]
-getLevel x (Node v left right)=
-  getLevel (x-1) left ++ getLevel (x-1) right
-
-listString list =
-  [show x| x<-list]
-
-dumpDOT (Node v left right)=
-  "digraph G{ \n"++ dumpNodes ( Node v left right) ++"}\n"
-
-dumpNode Empty = ""
-dumpNode (Node v _ _) = show v
-dumpNodes ( Node v Empty Empty) = ""
-dumpNodes ( Node v l Empty)= (show v) ++ "->" ++ (dumpNode l) ++ "\n" ++ (dumpNodes l)
-dumpNodes ( Node v Empty r) = (show v) ++ "->" ++ (dumpNode r) ++ "\n" ++ (dumpNodes r)
-dumpNodes ( Node v l r) = (show v) ++ "->" ++ (dumpNode l) ++ "\n" ++ (show v) ++ "->" ++ (dumpNode r) ++ "\n" ++ (dumpNodes l) ++ (dumpNodes r)
+nnodes :: Tree a -> Int
+nnodes Leaf             = 0
+nnodes (Node _ lt rt)   = 1 + nnodes lt + nnodes rt
