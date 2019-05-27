@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/bin"
-libdir     = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/lib/x86_64-linux-ghc-8.4.4/hs-empty-project-plain-0.1.0.0-DrqbQ5gIbjp4nfNo999jLo"
+libdir     = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/lib/x86_64-linux-ghc-8.4.4/hs-empty-project-plain-0.1.0.0-DrqbQ5gIbjp4nfNo999jLo-hs-empty-project-plain-exe"
 dynlibdir  = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/lib/x86_64-linux-ghc-8.4.4"
 datadir    = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/share/x86_64-linux-ghc-8.4.4/hs-empty-project-plain-0.1.0.0"
 libexecdir = "/home/daniel/Documents/programming-in-haskell/.cabal-sandbox/libexec/x86_64-linux-ghc-8.4.4/hs-empty-project-plain-0.1.0.0"

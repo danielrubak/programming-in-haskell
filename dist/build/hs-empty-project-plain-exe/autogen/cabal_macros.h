@@ -22,6 +22,17 @@
   (major1) == 4 && (major2) == 11 && (minor) <= 1)
 #endif /* MIN_VERSION_base */
 
+/* package hs-empty-project-plain-0.1.0.0 */
+#ifndef VERSION_hs_empty_project_plain
+#define VERSION_hs_empty_project_plain "0.1.0.0"
+#endif /* VERSION_hs_empty_project_plain */
+#ifndef MIN_VERSION_hs_empty_project_plain
+#define MIN_VERSION_hs_empty_project_plain(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 0)
+#endif /* MIN_VERSION_hs_empty_project_plain */
+
 /* tool alex-3.2.4 */
 #ifndef TOOL_VERSION_alex
 #define TOOL_VERSION_alex "3.2.4"
@@ -143,11 +154,8 @@
   (major1) == 2 && (major2) == 32 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_strip */
 
-#ifndef CURRENT_PACKAGE_KEY
-#define CURRENT_PACKAGE_KEY "hs-empty-project-plain-0.1.0.0-DrqbQ5gIbjp4nfNo999jLo"
-#endif /* CURRENT_PACKAGE_KEY */
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "hs-empty-project-plain-0.1.0.0-DrqbQ5gIbjp4nfNo999jLo"
+#define CURRENT_COMPONENT_ID "hs-empty-project-plain-0.1.0.0-DrqbQ5gIbjp4nfNo999jLo-hs-empty-project-plain-exe"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"
