@@ -32,6 +32,18 @@ To compile project and load all libraries, run:
 cabal repl
 ```
 
+If cabal throw error like this:
+
+```bash
+The 'repl' command does not support multiple target at once
+```
+
+run `cabal repl` command with selected target, for example:
+
+```bash
+cabal repl Intro
+```
+
 ## Useful links
 
 [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
@@ -39,3 +51,5 @@ cabal repl
 [Learn Haskell in one video](http://www.newthinktank.com/2015/08/learn-haskell-one-video/)
 
 [Real World Haskell](http://book.realworldhaskell.org/read/)
+
+[What I wish I knew when learning Haskell](http://dev.stephendiehl.com/hask/)
